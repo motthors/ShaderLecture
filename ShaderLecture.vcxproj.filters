@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\base">
+      <UniqueIdentifier>{530180b2-33f7-4b3d-87b8-62c76772e571}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ShaderLecture">
+      <UniqueIdentifier>{86c3a014-48f0-4980-8023-e4bb8a663326}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\base">
+      <UniqueIdentifier>{66fa9288-e9b7-4079-9a8e-f5f971027958}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\ShaderLecture">
+      <UniqueIdentifier>{54851076-fe8f-4fb9-a99d-371c609fe4f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\DXTK">
+      <UniqueIdentifier>{4d6e626c-653f-4c51-ac47-7bab1c1d2d9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\hlsl">
+      <UniqueIdentifier>{1a76ea2c-ebf9-422f-8715-f7f4c120175c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\ShaderLectureBase.cpp">
+      <Filter>ソース ファイル\ShaderLecture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ShaderLectureMAIN.cpp">
+      <Filter>ソース ファイル\ShaderLecture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dx11\DirectX11Base.cpp">
+      <Filter>ソース ファイル\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\FPSCounter.cpp">
+      <Filter>ソース ファイル\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\Input.cpp">
+      <Filter>ソース ファイル\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\main.cpp">
+      <Filter>ソース ファイル\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\WindowsBase.cpp">
+      <Filter>ソース ファイル\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\DebugCommentManager.cpp">
+      <Filter>ソース ファイル\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\SimpleMath.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\SkinnedEffect.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\SpriteBatch.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\SpriteFont.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\VertexTypes.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\WICTextureLoader.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\AlphaTestEffect.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\BasicEffect.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\BinaryReader.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\CommonStates.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\DDSTextureLoader.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\DGSLEffect.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\DGSLEffectFactory.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\DualTextureEffect.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\EffectCommon.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\EffectFactory.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\EnvironmentMapEffect.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\GamePad.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\GeometricPrimitive.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\Model.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\ModelLoadCMO.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\ModelLoadSDKMESH.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\ModelLoadVBO.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\pch.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\PrimitiveBatch.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DXTK\Src\ScreenGrab.cpp">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ErrorManager\ErrorManager.cpp">
+      <Filter>ソース ファイル\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\CallbackProc.cpp">
+      <Filter>ソース ファイル\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\Camera.cpp">
+      <Filter>ソース ファイル\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\MyFunction.cpp">
+      <Filter>ソース ファイル\base</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ShaderLectureBase.h">
+      <Filter>ヘッダー ファイル\ShaderLecture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DirectXSuperClass.h">
+      <Filter>ヘッダー ファイル\ShaderLecture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\dx11\DirectX11Base.h">
+      <Filter>ヘッダー ファイル\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\define.h">
+      <Filter>ヘッダー ファイル\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\FPSCounter.h">
+      <Filter>ヘッダー ファイル\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\IncludeAll.h">
+      <Filter>ヘッダー ファイル\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\Input.h">
+      <Filter>ヘッダー ファイル\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\WindowsBase.h">
+      <Filter>ヘッダー ファイル\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\DebugCommentManager.h">
+      <Filter>ヘッダー ファイル\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\SharedResourcePool.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\SimpleMath.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\SpriteBatch.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\SpriteFont.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\VertexTypes.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\WICTextureLoader.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\AlignedNew.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\Audio.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\Bezier.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\BinaryReader.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\CommonStates.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\ConstantBuffer.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\dds.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\DDSTextureLoader.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\DemandCreate.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\DirectXHelpers.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\EffectCommon.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\Effects.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\GamePad.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\GeometricPrimitive.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\Model.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\pch.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\PlatformHelpers.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\PrimitiveBatch.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DXTK\Src\ScreenGrab.h">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ErrorManager\errormanager.h">
+      <Filter>ヘッダー ファイル\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ShaderLectureMAIN.h">
+      <Filter>ソース ファイル\ShaderLecture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\Camera.h">
+      <Filter>ヘッダー ファイル\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\MyFunction.h">
+      <Filter>ヘッダー ファイル\base</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\DXTK\Src\SimpleMath.inl">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </None>
+    <None Include="src\DXTK\Src\TeapotData.inc">
+      <Filter>ソース ファイル\DXTK</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="src\hlsl\VS_normal.hlsl">
+      <Filter>ソース ファイル\hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="src\hlsl\PS_RefTex.hlsl">
+      <Filter>ソース ファイル\hlsl</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{01C705F4-0710-40BC-B092-74C22354C29F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>ShaderLecture</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(DXSDK_DIR)include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(DXSDK_DIR)Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(DXSDK_DIR)include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(DXSDK_DIR)Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <EnablePREfast>false</EnablePREfast>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>d3dcompiler.lib;winmm.lib;dxguid.lib;d3d11.lib;d3d9.lib;dinput8.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+      <ObjectFileOutput>$(SolutionDir)\src\shader\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <EnablePREfast>false</EnablePREfast>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>d3dcompiler.lib;winmm.lib;dxguid.lib;d3d11.lib;d3d9.lib;dinput8.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+      <ObjectFileOutput>$(SolutionDir)\src\shader\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\base\CallbackProc.cpp" />
+    <ClCompile Include="src\base\Camera.cpp" />
+    <ClCompile Include="src\base\DebugCommentManager.cpp" />
+    <ClCompile Include="src\base\FPSCounter.cpp" />
+    <ClCompile Include="src\base\Input.cpp" />
+    <ClCompile Include="src\base\main.cpp" />
+    <ClCompile Include="src\base\MyFunction.cpp" />
+    <ClCompile Include="src\base\WindowsBase.cpp" />
+    <ClCompile Include="src\dx11\DirectX11Base.cpp" />
+    <ClCompile Include="src\DXTK\Src\AlphaTestEffect.cpp" />
+    <ClCompile Include="src\DXTK\Src\BasicEffect.cpp" />
+    <ClCompile Include="src\DXTK\Src\BinaryReader.cpp" />
+    <ClCompile Include="src\DXTK\Src\CommonStates.cpp" />
+    <ClCompile Include="src\DXTK\Src\DDSTextureLoader.cpp" />
+    <ClCompile Include="src\DXTK\Src\DGSLEffect.cpp" />
+    <ClCompile Include="src\DXTK\Src\DGSLEffectFactory.cpp" />
+    <ClCompile Include="src\DXTK\Src\DualTextureEffect.cpp" />
+    <ClCompile Include="src\DXTK\Src\EffectCommon.cpp" />
+    <ClCompile Include="src\DXTK\Src\EffectFactory.cpp" />
+    <ClCompile Include="src\DXTK\Src\EnvironmentMapEffect.cpp" />
+    <ClCompile Include="src\DXTK\Src\GamePad.cpp" />
+    <ClCompile Include="src\DXTK\Src\GeometricPrimitive.cpp" />
+    <ClCompile Include="src\DXTK\Src\Model.cpp" />
+    <ClCompile Include="src\DXTK\Src\ModelLoadCMO.cpp" />
+    <ClCompile Include="src\DXTK\Src\ModelLoadSDKMESH.cpp" />
+    <ClCompile Include="src\DXTK\Src\ModelLoadVBO.cpp" />
+    <ClCompile Include="src\DXTK\Src\pch.cpp" />
+    <ClCompile Include="src\DXTK\Src\PrimitiveBatch.cpp" />
+    <ClCompile Include="src\DXTK\Src\ScreenGrab.cpp" />
+    <ClCompile Include="src\DXTK\Src\SimpleMath.cpp" />
+    <ClCompile Include="src\DXTK\Src\SkinnedEffect.cpp" />
+    <ClCompile Include="src\DXTK\Src\SpriteBatch.cpp" />
+    <ClCompile Include="src\DXTK\Src\SpriteFont.cpp" />
+    <ClCompile Include="src\DXTK\Src\VertexTypes.cpp" />
+    <ClCompile Include="src\DXTK\Src\WICTextureLoader.cpp" />
+    <ClCompile Include="src\ErrorManager\ErrorManager.cpp" />
+    <ClCompile Include="src\ShaderLectureBase.cpp" />
+    <ClCompile Include="src\ShaderLectureMAIN.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\base\Camera.h" />
+    <ClInclude Include="src\base\DebugCommentManager.h" />
+    <ClInclude Include="src\base\define.h" />
+    <ClInclude Include="src\base\FPSCounter.h" />
+    <ClInclude Include="src\base\IncludeAll.h" />
+    <ClInclude Include="src\base\Input.h" />
+    <ClInclude Include="src\base\MyFunction.h" />
+    <ClInclude Include="src\base\WindowsBase.h" />
+    <ClInclude Include="src\DirectXSuperClass.h" />
+    <ClInclude Include="src\dx11\DirectX11Base.h" />
+    <ClInclude Include="src\DXTK\Src\AlignedNew.h" />
+    <ClInclude Include="src\DXTK\Src\Audio.h" />
+    <ClInclude Include="src\DXTK\Src\Bezier.h" />
+    <ClInclude Include="src\DXTK\Src\BinaryReader.h" />
+    <ClInclude Include="src\DXTK\Src\CommonStates.h" />
+    <ClInclude Include="src\DXTK\Src\ConstantBuffer.h" />
+    <ClInclude Include="src\DXTK\Src\dds.h" />
+    <ClInclude Include="src\DXTK\Src\DDSTextureLoader.h" />
+    <ClInclude Include="src\DXTK\Src\DemandCreate.h" />
+    <ClInclude Include="src\DXTK\Src\DirectXHelpers.h" />
+    <ClInclude Include="src\DXTK\Src\EffectCommon.h" />
+    <ClInclude Include="src\DXTK\Src\Effects.h" />
+    <ClInclude Include="src\DXTK\Src\GamePad.h" />
+    <ClInclude Include="src\DXTK\Src\GeometricPrimitive.h" />
+    <ClInclude Include="src\DXTK\Src\Model.h" />
+    <ClInclude Include="src\DXTK\Src\pch.h" />
+    <ClInclude Include="src\DXTK\Src\PlatformHelpers.h" />
+    <ClInclude Include="src\DXTK\Src\PrimitiveBatch.h" />
+    <ClInclude Include="src\DXTK\Src\ScreenGrab.h" />
+    <ClInclude Include="src\DXTK\Src\SharedResourcePool.h" />
+    <ClInclude Include="src\DXTK\Src\SimpleMath.h" />
+    <ClInclude Include="src\DXTK\Src\SpriteBatch.h" />
+    <ClInclude Include="src\DXTK\Src\SpriteFont.h" />
+    <ClInclude Include="src\DXTK\Src\VertexTypes.h" />
+    <ClInclude Include="src\DXTK\Src\WICTextureLoader.h" />
+    <ClInclude Include="src\ErrorManager\errormanager.h" />
+    <ClInclude Include="src\ShaderLectureBase.h" />
+    <ClInclude Include="src\ShaderLectureMAIN.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\DXTK\Src\SimpleMath.inl" />
+    <None Include="src\DXTK\Src\TeapotData.inc" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="src\hlsl\VS_normal.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="src\hlsl\PS_RefTex.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+    </FxCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
