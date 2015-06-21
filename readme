@@ -1,0 +1,12 @@
+シェーダー講座で使うDirectXのプログラム一式です。
+6/22現在DirectX11で組んでいます。
+ソースのディレクトリ構造がまだしっかりしていないです。
+
+講座で使うファイルは
+
+src/ShaderLectureMAIN.h
+src/ShaderLectureMAIN.cpp
+src/shader/xxx.hlsl
+
+だけです。
+この中をいじるだけで講座を進めるようにする予定です。いまのとこ。
