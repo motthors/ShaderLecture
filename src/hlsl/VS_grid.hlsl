@@ -10,7 +10,7 @@ cbuffer cbSceneParam : register(b0)
 };
 
 //////////////////////////////////////////////////////////////
-// vs1
+// vs
 struct VS_IN
 {
 	float4 Pos		: POSITION;
