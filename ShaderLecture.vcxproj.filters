@@ -279,5 +279,8 @@
     <FxCompile Include="src\hlsl\PS_RefTex.hlsl">
       <Filter>ソース ファイル\hlsl</Filter>
     </FxCompile>
+    <FxCompile Include="src\hlsl\VS_grid.hlsl">
+      <Filter>ソース ファイル\base</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

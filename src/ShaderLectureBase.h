@@ -34,6 +34,19 @@ protected:
 	ID3D11Texture2D*		m_pDepthStencil = nullptr;
 	ID3D11DepthStencilView*	m_pDepthStencilView = nullptr;
 
+	// 補助グリッド頂点バッファ
+	ID3D11Buffer* m_pGridBuffer = nullptr;
+	ID3D11Buffer* m_pGridIndexBuffer = nullptr;
+	ID3D11InputLayout*	m_pGridLayout = nullptr;
+	ID3D11VertexShader*	m_pGridVShader = nullptr;
+	struct mConstVSG{
+		mat4 World;
+		mat4 View;
+		mat4 Proj;
+	} m_ConstVSG;
+	ID3D11Buffer*	m_pConstantBafferVSG = nullptr;
+	ID3D11RasterizerState*		m_pGridRS = nullptr;
+
 public:
 	ShaderLectureBase();
 	virtual ~ShaderLectureBase();

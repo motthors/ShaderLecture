@@ -34,7 +34,7 @@ HRESULT DirectX11Base::CreateDeviceAndSwapChain()
 	ZeroMemory(&sd, sizeof(sd));
 
 	// DXGI_MODE_DESC
-	sd.BufferDesc.Width = WINDOW_SIZE_W;　
+	sd.BufferDesc.Width = WINDOW_SIZE_W;
 	sd.BufferDesc.Height = WINDOW_SIZE_H;
 	sd.BufferDesc.RefreshRate.Numerator = 60;		//DXGI_RATIONAL リフレッシュレートの最大値
 	sd.BufferDesc.RefreshRate.Denominator = 1;		//DXGI_RATIONAL リフレッシュレートの最小値

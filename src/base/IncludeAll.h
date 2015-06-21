@@ -36,16 +36,3 @@ LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
 #include"../ErrorManager/ErrorManager.h"
 #include"MyFunction.h"
-
-
-
-#include "../util.h"
-#include "../dx11test.h"
-namespace
-{
-	const DWORD	kScreenWidth = 1280;
-	const DWORD	kScreenHeight = 720;
-
-	HINSTANCE	g_hInstance;
-	HWND		g_hWnd;
-}

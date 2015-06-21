@@ -15,9 +15,9 @@ class ShaderLectureMAIN : public ShaderLectureBase{
 
 	// 定数バッファ構造体宣言
 	struct m2DDWConstVS{
-		vec4 Width_Shift;
-		float FakeDepth;
-		vec3 __Blank;
+		mat4 World;
+		mat4 View;
+		mat4 Proj;
 	} m_ConstVS;
 	struct m2DDWConstPS{
 		float alpha;

@@ -1,6 +1,5 @@
 #include"ShaderLectureBase.h"
 
-using namespace dx11;
 
 static bool InitWindow(HINSTANCE hInstance);
 
@@ -14,6 +13,14 @@ ShaderLectureBase::~ShaderLectureBase()
 	RELEASE(m_pDepthStencilView);
 	RELEASE(m_pDepthStencil);
 	RELEASE(m_pRenderTargetView);
+
+	RELEASE(m_pGridBuffer);
+	RELEASE(m_pGridIndexBuffer);
+	RELEASE(m_pGridLayout);
+	RELEASE(m_pGridVShader);
+	RELEASE(m_pConstantBafferVSG);
+	RELEASE(m_pGridRS);
+
 }
 
 void ShaderLectureBase::Run(HINSTANCE hinst, int nCmd)
@@ -34,6 +41,8 @@ void ShaderLectureBase::Run(HINSTANCE hinst, int nCmd)
 		m_pInput->Init(hinst, m_pWinBase->GetHWND(), m_pDebugComM.get());
 			
 		m_pCamera = make_unique<Camera>();
+		m_pCamera->SetViewPort(1, 0, WINDOW_SIZE_W, WINDOW_SIZE_H);
+		m_pCamera->SetPers(XMConvertToRadians(65), 0.01f, 1000.0f);
 
 		m_pFPSCount = make_unique<FPSCounter>();
 		m_pFPSCount->SetStdFPS(60);
@@ -85,10 +94,12 @@ void ShaderLectureBase::GameLoop()
 
 			m_pInput->Update();
 			m_pInput->debugDraw();
+			subMove();
 			Move();
 			BeginDraw();
 			SetDataToShader();
 			Draw();
+			subDraw();
 			m_pDebugComM->Draw();
 			EndDraw();
 			m_pFPSCount->Wait();
@@ -265,7 +276,9 @@ void ShaderLectureBase::CreateDepthStencil()
 	}
 }
 
-
+typedef struct{
+	float x, y, z;		// 座標
+} VERTEX;
 
 void ShaderLectureBase::subInit()
 {
@@ -275,14 +288,119 @@ void ShaderLectureBase::subInit()
 
 	CreateRenderTarget();
 	CreateDepthStencil();
+
+	// 補助グリッド頂点データ作成
+	float arr[10];
+	FOR(10)arr[i] = i - 5;
+	VERTEX vtx[10*4];
+	ZeroMemory(vtx, sizeof(VERTEX) * 10 * 4);
+	// 頂点座標
+	FOR(10)
+	{
+		vtx[i].x		=  arr[i];	vtx[i].z		=  5.0f;
+		vtx[i + 10].x	= -arr[i];	vtx[i + 10].z	= -5.0f;
+		vtx[i + 20].x	=  5.0f;	vtx[i + 20].z	= -arr[i];
+		vtx[i + 30].x	= -5.0f;	vtx[i + 30].z	=  arr[i];
+	}
+	// 頂点バッファを作成
+	m_pDxBase->CreateVertexBuffer(&m_pGridBuffer, vtx, sizeof(vtx), 0);
+	// インデックスバッファ作成
+	USHORT Index[] = { 
+		0, 30, 
+		1, 19, 
+		2, 18,
+		3,17,
+		4,16,
+		5,15,
+		6,14,
+		7,13,
+		8,12,
+		9,11,
+		10,20,
+		0,20,
+		39,21,
+		38,22,
+		37,23,
+		36,24,
+		35,25,
+		34,26,
+		33,27,
+		32,28,
+		31,29,
+		30,10
+	};
+	m_pDxBase->CreateIndexBuffer(&m_pGridIndexBuffer, Index, sizeof(Index), 0);
+
+	// グリッド用レイアウト
+	// 入力レイアウトの作成
+	D3D11_INPUT_ELEMENT_DESC m_pLayoutDesc[1] = {
+		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+	};
+
+	//シェーダの作成
+	CreateVertexShader(&m_pGridVShader, _T("src/shader/VS_grid.cso"),
+		m_pLayoutDesc, sizeof(m_pLayoutDesc) / sizeof(m_pLayoutDesc[0]), &m_pGridLayout);
+
+	// 定数バッファ
+	XMStoreFloat4x4(&m_ConstVSG.World, XMMatrixIdentity());
+	m_pDxBase->CreateConstantBuffer(&m_pConstantBafferVSG, NULL, sizeof(m_ConstVSG), D3D11_CPU_ACCESS_WRITE);
+
+	/////////////////////////////////////////////////////
+	// ラスタライザステート
+	D3D11_RASTERIZER_DESC rsDesc;
+	ZeroMemory(&rsDesc, sizeof(rsDesc));
+	rsDesc.CullMode = D3D11_CULL_NONE;
+	rsDesc.FillMode = D3D11_FILL_WIREFRAME;
+	rsDesc.AntialiasedLineEnable = true; // 線のAA有効
+	rsDesc.DepthClipEnable = TRUE;
+	HRESULT hr = m_pDevice->CreateRasterizerState(&rsDesc, &m_pGridRS);
+	if (FAILED(hr))
+	{
+		ErrM.SetClassName(_T("ShaderManager::CreateCommonState::CreateRasterizerState"));
+		ErrM.SetErrorText(_T("ラスタライザステート作成に失敗"));
+		ErrM.SetHResult(hr);
+		throw &ErrM;
+	}
 }
+
 
 void ShaderLectureBase::subMove()
 {
+	float x, y;
+	if (m_pInput->GetMouseButton(INPUT_MOUSE_LEFT))
+	{
+		y = 0.002f*(float)m_pInput->GetMouse_Y_Relative();
+		x = 0.002f*(float)m_pInput->GetMouse_X_Relative();
+		m_pCamera->SetCameraRotaX_outside(x);
+		m_pCamera->SetCameraRotaY_outside(-y);
+	}
+	m_pCamera->ShaderLecture();
 }
 
 void ShaderLectureBase::subDraw()
 {
+	// VSへ定数バッファ設定 行列を転置して登録わすれずに
+	mat V = XMLoadFloat4x4(m_pCamera->GetView());
+	mat P = XMLoadFloat4x4(m_pCamera->GetPers());
+	V = XMMatrixTranspose(V);
+	P = XMMatrixTranspose(P);
+	XMStoreFloat4x4(&m_ConstVSG.View, V);
+	XMStoreFloat4x4(&m_ConstVSG.Proj, P);
+	m_pDxBase->SetConstBuffer(m_pConstantBafferVSG, reinterpret_cast<void*>(&m_ConstVSG), sizeof(m_ConstVSG));
+	m_pContext->VSSetConstantBuffers(0, 1, &m_pConstantBafferVSG);
+
+	//シェーダをセット
+	m_pContext->IASetInputLayout(m_pGridLayout);
+	m_pContext->VSSetShader(m_pGridVShader, NULL, 0);
+
+	/////Draw
+	UINT stride = sizeof(VERTEX);
+	UINT offset = 0;
+	m_pContext->IASetVertexBuffers(0, 1, &m_pGridBuffer, &stride, &offset);
+	m_pContext->IASetIndexBuffer(m_pGridIndexBuffer, DXGI_FORMAT_R16_UINT, 0);
+	m_pContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
+
+	m_pContext->DrawIndexed(44, 0, 0);
 }
 
 

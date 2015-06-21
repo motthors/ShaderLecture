@@ -103,6 +103,9 @@ public:
 	//Menu2();
 	//	･･
 
+	// シェーダ講座用カメラ操作
+	void ShaderLecture();
+
 	//カメラを移動させる
 	void CameraMove(vec* direct);
 

@@ -331,7 +331,6 @@ void Camera::PASCamera(vec3* BasePoint, vec3* Direc, vec3* UP, float Length)
 	FreeLookCameraCalc(&CamRot, &t_Direc, &t_UP, &x);
 
 	//カメラ位置ベクトル計算 変数再利用　x -> TransedPosition
-	vec temp;
 	x = t_Direc;
 	x = XMVectorScale(x, len);
 	x = XMVectorSubtract(t_BasePoint, x);
@@ -339,6 +338,24 @@ void Camera::PASCamera(vec3* BasePoint, vec3* Direc, vec3* UP, float Length)
 	SetView(&pos, &CamRot, &up);
 }
 
+///////////////////////////////////////////////////////////////////////
+
+void Camera::ShaderLecture()
+{
+	vec x;
+	vec t_Direc = XMLoadFloat3(&vec3(0, 0, 1));
+	vec t_UP = XMLoadFloat3(&vec3(0, 1, 0));
+	x = XMVector3Cross(t_Direc, t_UP);
+
+	/////視点変更のベクトル計算
+	FreeLookCameraCalc(&CamRot, &t_Direc, &t_UP, &x);
+
+	//カメラ位置ベクトル計算 変数再利用　x -> TransedPosition
+	x = XMLoadFloat3(&CamRot);
+	x = XMVectorScale(x, -len);
+	SetViewSpring(&x, &t_Direc, &t_UP, /*Length = */5.0f, 50.f, 0.6f, 0.9f);
+	SetView(&pos, &CamRot, &up);
+}
 
 ///////////////////////////////////////////////////////////////////////
 void Camera::SetCameraRotaX(FLOAT value, int flag){

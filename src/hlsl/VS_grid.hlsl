@@ -14,7 +14,6 @@ cbuffer cbSceneParam : register(b0)
 struct VS_IN
 {
 	float4 Pos		: POSITION;
-	float2 uv		: TEXCOORD0;
 };
 
 struct VS_OUT
@@ -31,9 +30,7 @@ VS_OUT main(VS_IN In)
 	Out.Pos = mul(In.Pos, matWorld);
 	Out.Pos = mul(Out.Pos, matView);
 	Out.Pos = mul(Out.Pos, matProj);
-	//Out.Pos = In.Pos*0.4;
-	//Out.Pos.w = 1.0;
-	Out.uv = In.uv;
+	Out.uv = float2(1,1);
 
 	return Out;
 }

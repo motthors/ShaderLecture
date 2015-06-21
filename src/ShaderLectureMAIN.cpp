@@ -45,10 +45,10 @@ ShaderLectureMAIN::Init()
 	vtx[2].x = -0.5f;	vtx[2].y = -0.5f;	vtx[2].z = 0.0f;
 	vtx[3].x = 1.0f;	vtx[3].y = -1.0f;	vtx[3].z = 0.0f;
 	// テクセル
-	vtx[0].u = 0.0f + 0.5f * WINDOW_SIZE_W; vtx[0].v = 0.0f + 0.5f * WINDOW_SIZE_H;
-	vtx[1].u = 1.0f + 0.5f * WINDOW_SIZE_W; vtx[1].v = 0.0f + 0.5f * WINDOW_SIZE_H;
-	vtx[2].u = 0.0f + 0.5f * WINDOW_SIZE_W; vtx[2].v = 1.0f + 0.5f * WINDOW_SIZE_H;
-	vtx[3].u = 1.0f + 0.5f * WINDOW_SIZE_W; vtx[3].v = 1.0f + 0.5f * WINDOW_SIZE_H;
+	vtx[0].u = 0.0f + 0.5f / WINDOW_SIZE_W; vtx[0].v = 0.0f + 0.5f / WINDOW_SIZE_H;
+	vtx[1].u = 1.0f + 0.5f / WINDOW_SIZE_W; vtx[1].v = 0.0f + 0.5f / WINDOW_SIZE_H;
+	vtx[2].u = 0.0f + 0.5f / WINDOW_SIZE_W; vtx[2].v = 1.0f + 0.5f / WINDOW_SIZE_H;
+	vtx[3].u = 1.0f + 0.5f / WINDOW_SIZE_W; vtx[3].v = 1.0f + 0.5f / WINDOW_SIZE_H;
 	// 頂点バッファを作成
 	m_pDxBase->CreateVertexBuffer(&m_pVertexBuffer, vtx, sizeof(vtx), 0);
 
@@ -169,6 +169,8 @@ ShaderLectureMAIN::Init()
 	// レンダリングターゲットを設定する
 	m_pContext->OMSetRenderTargets(1, &m_pRenderTargetView, m_pDepthStencilView);
 
+	// 定数バッファの数値設定
+	XMStoreFloat4x4(&m_ConstVS.World, XMMatrixTranspose(XMMatrixIdentity()));
 }
 
 
@@ -182,7 +184,13 @@ ShaderLectureMAIN::Move()
 void
 ShaderLectureMAIN::SetDataToShader()
 {
-	// VSへ定数バッファ設定
+	// VSへ定数バッファ設定 行列を転置して登録わすれずに
+	mat V = XMLoadFloat4x4(m_pCamera->GetView());
+	mat P = XMLoadFloat4x4(m_pCamera->GetPers());
+	V = XMMatrixTranspose(V);
+	P = XMMatrixTranspose(P);
+	XMStoreFloat4x4(&m_ConstVS.View, V);
+	XMStoreFloat4x4(&m_ConstVS.Proj, P);
 	m_pDxBase->SetConstBuffer(m_pConstantBafferVS, reinterpret_cast<void*>(&m_ConstVS), sizeof(m_ConstVS));
 	m_pContext->VSSetConstantBuffers(0, 1, &m_pConstantBafferVS);
 	// PSへ定数バッファ設定
@@ -205,9 +213,6 @@ ShaderLectureMAIN::SetDataToShader()
 void
 ShaderLectureMAIN::Draw()
 {
-
-	///////////////////////////
-
 	/////Draw
 	UINT stride = sizeof(VERTEX);
 	UINT offset = 0;
@@ -216,6 +221,4 @@ ShaderLectureMAIN::Draw()
 	m_pContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
 	m_pContext->DrawIndexed(4, 0, 0);
-
-	////////////////////////////
 }

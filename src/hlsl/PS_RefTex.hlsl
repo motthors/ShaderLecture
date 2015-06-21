@@ -21,7 +21,7 @@ PS_OUT main(PS_IN In)
 {
 	PS_OUT Out = (PS_OUT)0;
 
-	Out.MainCol = float4(1, 0, 0, 1);//Tex.Sample(Sampler, In.uv);
+	Out.MainCol = float4(In.uv.x, 0, In.uv.y, 1);//Tex.Sample(Sampler, In.uv);
 
 	return Out;
 }
